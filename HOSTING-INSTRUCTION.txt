@@ -1,0 +1,40 @@
+КАК ЗАГРУЗИТЬ НА БЕСПЛАТНЫЙ ХОСТИНГ INFINITYFREE
+
+1. Зарегистрируйтесь на infinityfree.net.
+2. Создайте новый сайт.
+3. В панели хостинга откройте MySQL Databases.
+4. Создайте базу данных.
+5. Скопируйте данные базы:
+   - MySQL Host Name
+   - MySQL Database Name
+   - MySQL Username
+   - MySQL Password
+
+6. Откройте файл db_config.php и замените значения:
+
+'host' => 'ВАШ_MYSQL_HOST',
+'database' => 'ВАША_DATABASE_NAME',
+'username' => 'ВАШ_USERNAME',
+'password' => 'ВАШ_PASSWORD',
+
+7. Откройте phpMyAdmin на хостинге.
+8. Выберите вашу базу данных.
+9. Нажмите Import / Импорт.
+10. Загрузите файл database.sql.
+
+11. Через File Manager или FTP загрузите все файлы проекта в папку htdocs:
+   - index.php
+   - register.php
+   - login.php
+   - logout.php
+   - worker.php
+   - admin.php
+   - config.php
+   - db_config.php
+   - style.css
+
+Файл database.sql загружать в htdocs не обязательно. Он нужен только для импорта таблиц.
+Папка data больше не нужна для MySQL-версии.
+
+12. Откройте сайт по ссылке, которую даст хостинг.
+13. Первый зарегистрированный пользователь станет админом.

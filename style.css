@@ -381,3 +381,115 @@ th {
 select {
     font-size: 17px !important;
 }
+
+/* Sizes table desktop & mobile responsiveness */
+.sizes-table {
+    min-width: auto; /* Allow the table to shrink and fit on desktop without scroll */
+}
+
+@media (max-width: 600px) {
+    .sizes-table, 
+    .sizes-table thead, 
+    .sizes-table tbody, 
+    .sizes-table tr, 
+    .sizes-table th, 
+    .sizes-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .sizes-table thead {
+        display: none; /* Hide header on mobile */
+    }
+
+    .sizes-table tr {
+        background: #f8fbff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 14px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .sizes-table td {
+        padding: 10px 0;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    /* Column titles & formatting on mobile */
+    .sizes-table td:nth-child(1) {
+        font-size: 20px;
+        font-weight: 700;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .sizes-table td:nth-child(1)::before {
+        content: "Размер:";
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: normal;
+    }
+
+    .sizes-table td:nth-child(2) {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+
+    .sizes-table td:nth-child(2)::before {
+        content: "На складе:";
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: normal;
+    }
+
+    /* Interactive forms on mobile */
+    .sizes-table td:nth-child(3),
+    .sizes-table td:nth-child(4) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+
+    .sizes-table td:nth-child(3)::before {
+        content: "Отгрузка (вычесть):";
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: normal;
+        align-self: flex-start;
+    }
+
+    .sizes-table td:nth-child(4)::before {
+        content: "Редактировать склад (ОК):";
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: normal;
+        align-self: flex-start;
+    }
+
+    .sizes-table .stock-form {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+    }
+
+    .sizes-table .stock-form input {
+        flex: 1;
+        width: 100% !important;
+        height: 38px;
+        font-size: 16px;
+    }
+
+    .sizes-table .stock-form button,
+    .sizes-table .dispatch-btn {
+        flex: 1;
+        height: 38px;
+        font-size: 15px;
+    }
+}

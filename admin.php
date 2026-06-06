@@ -114,7 +114,7 @@ $totals = $pdo->query("SELECT clamp_sizes.title AS size_title, COALESCE(SUM(work
             </form>
 
             <div class="table-wrap">
-                <table>
+                <table class="sizes-table">
                     <thead>
                         <tr>
                             <th>Размер</th>

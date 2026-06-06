@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+date_default_timezone_set('Asia/Bishkek');
+
 $dbConfig = require __DIR__ . '/db_config.php';
 
 $dsn = sprintf(
@@ -13,6 +15,7 @@ $dsn = sprintf(
 $pdo = new PDO($dsn, $dbConfig['username'], $dbConfig['password']);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+$pdo->exec("SET time_zone = '+06:00'");
 
 function current_user(): ?array
 {

@@ -104,7 +104,7 @@ $entries = $stmt->fetchAll();
                     <tbody>
                         <?php foreach ($entries as $entry): ?>
                             <tr>
-                                <td><?= e($entry['created_at']) ?></td>
+                                <td><?= date('d.m.Y H:i', strtotime($entry['created_at'])) ?></td>
                                 <td><?= e($entry['title']) ?></td>
                                 <td class="size-title"><?= e($entry['size_title']) ?></td>
                                 <td><?= (int) $entry['quantity'] ?></td>

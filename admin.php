@@ -191,7 +191,7 @@ $totals = $pdo->query("SELECT clamp_sizes.title AS size_title, COALESCE(SUM(work
                                 <tr class="date-row"><td colspan="5">Отчёт за <?= e($currentDate) ?></td></tr>
                             <?php endif; ?>
                             <tr>
-                                <td><?= e($entry['created_at']) ?></td>
+                                <td><?= date('d.m.Y H:i', strtotime($entry['created_at'])) ?></td>
                                 <td><?= e($entry['user_name']) ?></td>
                                 <td><?= e($entry['title']) ?></td>
                                 <td class="size-title"><?= e($entry['size_title']) ?></td>
@@ -225,7 +225,7 @@ $totals = $pdo->query("SELECT clamp_sizes.title AS size_title, COALESCE(SUM(work
                                 <td><?= e($item['name']) ?></td>
                                 <td><?= e($item['username']) ?></td>
                                 <td><?= e($item['role']) ?></td>
-                                <td><?= e($item['created_at']) ?></td>
+                                <td><?= date('d.m.Y H:i', strtotime($item['created_at'])) ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

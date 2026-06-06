@@ -59,3 +59,15 @@ function e(string $value): string
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
+
+function get_stock_class(int $stock): string
+{
+    if ($stock < 500) {
+        return 'stock-low';
+    } elseif ($stock < 1000) {
+        return 'stock-medium';
+    } else {
+        return 'stock-high';
+    }
+}
+

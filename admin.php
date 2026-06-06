@@ -126,8 +126,8 @@ $totals = $pdo->query("SELECT clamp_sizes.title AS size_title, COALESCE(SUM(work
                     <tbody>
                         <?php foreach ($sizes as $size): ?>
                             <tr>
-                                <td><?= e($size['title']) ?></td>
-                                <td><?= (int) $size['stock'] ?></td>
+                                <td class="size-title"><?= e($size['title']) ?></td>
+                                <td><span class="stock-badge <?= get_stock_class((int) $size['stock']) ?>"><?= (int) $size['stock'] ?></span></td>
                                 <td>
                                     <form class="stock-form dispatch-form" method="post">
                                         <input type="hidden" name="action" value="dispatch_stock">
@@ -147,7 +147,7 @@ $totals = $pdo->query("SELECT clamp_sizes.title AS size_title, COALESCE(SUM(work
                             </tr>
                         <?php endforeach; ?>
                         <?php if (!$sizes): ?>
-                            <tr><td colspan="3">Размеров пока нет.</td></tr>
+                            <tr><td colspan="4">Размеров пока нет.</td></tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
@@ -194,7 +194,7 @@ $totals = $pdo->query("SELECT clamp_sizes.title AS size_title, COALESCE(SUM(work
                                 <td><?= e($entry['created_at']) ?></td>
                                 <td><?= e($entry['user_name']) ?></td>
                                 <td><?= e($entry['title']) ?></td>
-                                <td><?= e($entry['size_title']) ?></td>
+                                <td class="size-title"><?= e($entry['size_title']) ?></td>
                                 <td><?= (int) $entry['quantity'] ?></td>
                             </tr>
                         <?php endforeach; ?>

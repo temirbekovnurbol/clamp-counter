@@ -197,7 +197,7 @@ select {
 }
 
 .admin-layout {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1.65fr 0.85fr;
 }
 
 .panel {
@@ -245,39 +245,57 @@ th {
     text-transform: uppercase;
 }
 
+.stock-form {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.stock-form input {
+    width: 75px;
+    min-height: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
 .dispatch-form input {
-    width: 80px !important;
+    width: 75px !important;
+}
+
+.stock-form button,
+.dispatch-btn {
+    min-height: 32px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stock-form button {
+    background: var(--primary);
+    color: #fff;
+}
+
+.stock-form button:hover {
+    background: var(--primary-dark);
 }
 
 .dispatch-btn {
     background: #ff4d4f !important;
     color: white !important;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .dispatch-btn:hover {
     background: #cf1322 !important;
-}
-
-.stock-form {
-    display: flex;
-    gap: 8px;
-}
-
-.stock-form input {
-    width: 110px;
-}
-
-.stock-form button {
-    border: 0;
-    border-radius: 10px;
-    background: var(--primary);
-    color: #fff;
-    font-weight: 700;
-    cursor: pointer;
 }
 
 .cards {
@@ -321,4 +339,45 @@ th {
     .hero-card {
         padding: 24px;
     }
+}
+
+.size-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.stat-card span {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text) !important;
+}
+
+.stock-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.stock-badge.stock-low {
+    background-color: #fee4e2;
+    color: #b42318;
+}
+
+.stock-badge.stock-medium {
+    background-color: #fef0c7;
+    color: #b54708;
+}
+
+.stock-badge.stock-high {
+    background-color: #d1fadf;
+    color: #027a48;
+}
+
+select {
+    font-size: 17px !important;
 }

@@ -106,7 +106,7 @@ $entries = $stmt->fetchAll();
                             <tr>
                                 <td><?= e($entry['created_at']) ?></td>
                                 <td><?= e($entry['title']) ?></td>
-                                <td><?= e($entry['size_title']) ?></td>
+                                <td class="size-title"><?= e($entry['size_title']) ?></td>
                                 <td><?= (int) $entry['quantity'] ?></td>
                             </tr>
                         <?php endforeach; ?>

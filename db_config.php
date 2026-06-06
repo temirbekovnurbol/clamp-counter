@@ -1,8 +1,8 @@
 <?php
 return [
-    'host' => 'ВСТАВЬ_HOST_ОТ_AWARDSPACE',
-    'database' => 'ВСТАВЬ_DATABASE_NAME',
-    'username' => 'ВСТАВЬ_USERNAME',
-    'password' => 'ВСТАВЬ_PASSWORD',
+    'host' => 'sql302.infinityfree.com',
+    'database' => 'if0_42099093_hamut',
+    'username' => 'if0_42099093',
+    'password' => 'hYqzbaWX8qKe',
     'charset' => 'utf8mb4',
 ];

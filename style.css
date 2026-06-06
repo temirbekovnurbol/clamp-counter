@@ -245,6 +245,23 @@ th {
     text-transform: uppercase;
 }
 
+.dispatch-form input {
+    width: 80px !important;
+}
+
+.dispatch-btn {
+    background: #ff4d4f !important;
+    color: white !important;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dispatch-btn:hover {
+    background: #cf1322 !important;
+}
+
 .stock-form {
     display: flex;
     gap: 8px;

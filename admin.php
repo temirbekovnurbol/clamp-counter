@@ -37,6 +37,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = 'Склад обновлён.';
         }
     }
+
+    if ($action === 'dispatch_stock') {
+        $sizeId = (int) ($_POST['size_id'] ?? 0);
+        $quantity = (int) ($_POST['quantity'] ?? 0);
+
+        if ($sizeId <= 0 || $quantity <= 0) {
+            $error = 'Укажите верное количество для отгрузки.';
+        } else {
+            // Проверяем, есть ли столько на складе
+            $stmt = $pdo->prepare('SELECT stock FROM clamp_sizes WHERE id = ?');
+            $stmt->execute([$sizeId]);
+            $currentStock = (int) ($stmt->fetchColumn() ?? 0);
+
+            if ($quantity > $currentStock) {
+                $error = 'На складе недостаточно товара!';
+            } else {
+                $stmt = $pdo->prepare('UPDATE clamp_sizes SET stock = stock - ? WHERE id = ?');
+                $stmt->execute([$quantity, $sizeId]);
+                $message = 'Товар отгружен (вычтено ' . $quantity . ' шт.).';
+            }
+        }
+    }
 }
 
 $sizes = $pdo->query('SELECT * FROM clamp_sizes ORDER BY title')->fetchAll();
@@ -97,7 +119,8 @@ $totals = $pdo->query("SELECT clamp_sizes.title AS size_title, COALESCE(SUM(work
                         <tr>
                             <th>Размер</th>
                             <th>Склад</th>
-                            <th>Изменить</th>
+                            <th>Забрали</th>
+                            <th>Редактировать</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,6 +128,14 @@ $totals = $pdo->query("SELECT clamp_sizes.title AS size_title, COALESCE(SUM(work
                             <tr>
                                 <td><?= e($size['title']) ?></td>
                                 <td><?= (int) $size['stock'] ?></td>
+                                <td>
+                                    <form class="stock-form dispatch-form" method="post">
+                                        <input type="hidden" name="action" value="dispatch_stock">
+                                        <input type="hidden" name="size_id" value="<?= (int) $size['id'] ?>">
+                                        <input name="quantity" type="number" min="1" placeholder="Кол-во">
+                                        <button type="submit" class="dispatch-btn">Вычесть</button>
+                                    </form>
+                                </td>
                                 <td>
                                     <form class="stock-form" method="post">
                                         <input type="hidden" name="action" value="update_stock">
